@@ -1,10 +1,10 @@
 import { Slot } from 'expo-router'
-import { StatusBar } from 'expo-status-bar'
+import { StatusBar } from 'react-native'
 
 export default function HomeLayout() {
   return (
     <>
-      <StatusBar style="light" />
+      <StatusBar barStyle="dark-content" />
       <Slot />
     </>
   )
