@@ -1,11 +1,13 @@
 import { useState } from 'react'
-import { Image, Text, View } from 'react-native'
+import { Button, Image, Text, View } from 'react-native'
 import { useForm } from 'react-hook-form'
 import { UsernameInput } from '../components/UsernameInput'
 import { FormDataProps } from '../types/DataFormProps'
 import BRQLogo from '../../assets/icon.png'
 import { PasswordInput } from '../components/PasswordInput'
 import { EnterButton } from '../components/EnterButton'
+import { ForgotMyPasswordButton } from '../components/ForgotMyPasswordButton'
+import { router } from 'expo-router'
 
 export function Login() {
   const [loginError, setLoginError] = useState(false)
@@ -18,7 +20,6 @@ export function Login() {
   function handleSignUp(data: FormDataProps) {
     if (data.username === 'user' && data.password === '123') {
       setLoginError(false)
-      // route to /Home
       return
     }
 
@@ -26,7 +27,7 @@ export function Login() {
   }
 
   return (
-    <View className="w-full flex-1 items-center justify-center p-4">
+    <View className="h-screen w-full items-center justify-center bg-brqNeutral p-4">
       <Image source={BRQLogo} alt="BRQ Logo" />
 
       <UsernameInput
@@ -39,14 +40,16 @@ export function Login() {
       />
 
       <Text
-        className={`mt-5 text-red-500 ${
+        className={`mb-4 text-red-500 ${
           loginError ? 'opacity-1' : 'opacity-0'
         }`}
       >
         Dados inválidos
       </Text>
 
+      <Button title="home" onPress={() => router.replace('/home')} />
       <EnterButton handleLogin={handleSubmit(handleSignUp)} />
+      <ForgotMyPasswordButton />
     </View>
   )
 }
