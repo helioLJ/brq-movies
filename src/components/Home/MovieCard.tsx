@@ -13,6 +13,7 @@ export function MovieCard({ item }: MovieCardProps) {
     <TouchableOpacity
       onPress={() => router.replace(`/movie/${item.id}`)}
       className="m-2 h-[228px] w-[156px]"
+      testID={`movie-card-${item.id}`}
     >
       <ImageBackground
         source={{

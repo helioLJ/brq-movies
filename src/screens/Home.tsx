@@ -16,14 +16,13 @@ export function Home() {
       horizontal={true}
       className="h-screen w-full bg-brqNeutral p-4 pt-8"
     >
-      {data && (
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item.id.toString()}
-          numColumns={2}
-          renderItem={({ item }) => <MovieCard item={item} />}
-        />
-      )}
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={2}
+        renderItem={({ item }) => <MovieCard item={item} />}
+        testID="movies-flat-list"
+      />
     </ScrollView>
   )
 }
