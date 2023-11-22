@@ -15,10 +15,12 @@ EXPO_PUBLIC_API_KEY=SuaChaveAqui
 - Para rodar o projeto localmente, execute os seguintes comandos:
 
 ```bash
+git clone https://github.com/helioLJ/brq-movies.git
+cd brq-movies
 npm install
 npx expo start
 ```
-- Recomendo o uso do aplicativo Expo Go para visualizar o aplicativo no seu dispositivo móvel. Leia o QRCode no terminal para visualizar no celular. Porém também é possível visualizar na web pressionando "w" no terminal.
+- Recomendo o uso do aplicativo Expo Go para visualizar o aplicativo no seu dispositivo móvel. Leia o QRCode no terminal para visualizar no celular.
 
 ## Estrutura de Pastas
 - O código é organizado em diferentes componentes, facilitando a manutenção e compreensão do projeto.

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Image, Text, View } from 'react-native'
+import { Image, Text, View } from 'react-native'
 import { useForm } from 'react-hook-form'
 import { router } from 'expo-router'
 
@@ -49,7 +49,6 @@ export function Login() {
         Dados inválidos
       </Text>
 
-      <Button title="home" onPress={() => router.replace('/home')} />
       <EnterButton handleLogin={handleSubmit(handleSignUp)} />
       <ForgotMyPasswordButton />
     </View>
