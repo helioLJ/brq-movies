@@ -2,6 +2,8 @@
 
 Este é um aplicativo simples para visualização de uma lista de filmes, com a capacidade de marcar filmes como favoritos. Abaixo estão alguns detalhes importantes sobre o projeto.
 
+![eae](./README//app-video.gif)
+
 ## Instruções de Login
 - Para acessar a tela de login, utilize as seguintes credenciais: **Usuário: user | Senha: 123**
 
