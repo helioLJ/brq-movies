@@ -1,29 +1,48 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useLocalSearchParams } from 'expo-router'
-import { useState, useEffect } from 'react'
-import { ImageBackground, ScrollView, Text, View } from 'react-native'
-import { API_URL } from '../utils/API_URL'
+import { useState, useEffect, useRef } from 'react'
+import { Animated } from 'react-native'
+import { API_URL } from '../utils/apiURL'
 import { api } from '../utils/axios'
-
-const apiKey = process.env.EXPO_PUBLIC_API_KEY
-
-interface Movie {
-  id: number
-  title: string
-  poster_path: string
-  overview: string
-}
+import { StickyHeader } from '../components/Movie/StickyHeader/StickyHeader'
+import { MovieType } from '../types/MovieType'
+import { apiKey } from '../utils/envVariables'
+import { Banner } from '../components/Movie/Banner'
+import { MovieDetails } from '../components/Movie/MovieDetails'
 
 export function Movie() {
   const { id } = useLocalSearchParams()
-  const [data, setData] = useState<Movie>()
+  const [data, setData] = useState<MovieType>()
+
+  const scrollY = useRef(new Animated.Value(0)).current
+  const scrollInterpolations = {
+    headerTranslateY: scrollY.interpolate({
+      inputRange: [0, 200],
+      outputRange: [0, 200],
+      extrapolate: 'clamp',
+    }),
+    headerBackgroundColor: scrollY.interpolate({
+      inputRange: [0, 200],
+      outputRange: ['rgba(0, 0, 0, 0)', '#2E2F33'],
+      extrapolate: 'clamp',
+    }),
+    backBackgroundColor: scrollY.interpolate({
+      inputRange: [0, 200],
+      outputRange: ['#16171B', '#EC8B00'],
+      extrapolate: 'clamp',
+    }),
+    titleOpacity: scrollY.interpolate({
+      inputRange: [0, 200],
+      outputRange: [0, 1],
+      extrapolate: 'clamp',
+    }),
+  }
 
   async function getMovie() {
     try {
       const { data } = await api.get(
         `${API_URL}movie/${id}?language=pt-BR&api_key=${apiKey}`,
       )
-      console.log(data)
       setData(data)
     } catch (error) {
       console.log(`Erro ao chamar a API: ${error}`)
@@ -35,26 +54,30 @@ export function Movie() {
   }, [])
 
   return (
-    <ScrollView className="h-screen w-full bg-brqNeutral">
+    <Animated.ScrollView
+      onScroll={Animated.event(
+        [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+        { useNativeDriver: false },
+      )}
+      scrollEventThrottle={16}
+      className="h-screen w-full bg-brqNeutral"
+    >
       {data && (
         <>
-          <View className="h-[500px] w-full">
-            <ImageBackground
-              source={{
-                uri: 'https://image.tmdb.org/t/p/w500/' + data.poster_path,
-              }}
-              className="flex-1"
-            />
-          </View>
-          <View className="px-4 py-8">
-            <Text className="text-3xl font-bold text-white">{data.title}</Text>
-            <Text className="mt-4 text-sm font-bold text-brqOrange">
-              SINOPSE
-            </Text>
-            <Text className="mt-4 text-base text-white">{data.overview}</Text>
-          </View>
+          <StickyHeader
+            backBackgroundColor={scrollInterpolations.backBackgroundColor}
+            headerBackgroundColor={scrollInterpolations.headerBackgroundColor}
+            headerTranslateY={scrollInterpolations.headerTranslateY}
+            titleOpacity={scrollInterpolations.titleOpacity}
+            title={data.title}
+            movieId={Number(id)}
+          />
+
+          <Banner poster_path={data.poster_path} />
+
+          <MovieDetails title={data.title} overview={data.overview} />
         </>
       )}
-    </ScrollView>
+    </Animated.ScrollView>
   )
 }

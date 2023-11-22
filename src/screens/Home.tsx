@@ -1,10 +1,9 @@
 import { FlatList, ScrollView } from 'react-native'
 import { api } from '../utils/axios'
-import { API_URL } from '../utils/API_URL'
+import { API_URL } from '../utils/apiURL'
 import { useEffect, useState } from 'react'
 import { MovieCard } from '../components/MovieCard'
-
-const apiKey = process.env.EXPO_PUBLIC_API_KEY
+import { apiKey } from '../utils/envVariables'
 
 export function Home() {
   const [data, setData] = useState<{ id: number; poster_path: string }[]>()
@@ -12,7 +11,7 @@ export function Home() {
   async function getMovies() {
     try {
       const { data } = await api.get(
-        `${API_URL}movie/popular?language=en-US&page=1&api_key=${apiKey}`,
+        `${API_URL}movie/popular?language=pt-BR&page=1&api_key=${apiKey}`,
       )
       setData(data.results)
     } catch (error) {

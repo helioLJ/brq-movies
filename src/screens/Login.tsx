@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { Button, Image, Text, View } from 'react-native'
 import { useForm } from 'react-hook-form'
 import { UsernameInput } from '../components/UsernameInput'
-import { FormDataProps } from '../types/DataFormProps'
 import BRQLogo from '../../assets/icon.png'
 import { PasswordInput } from '../components/PasswordInput'
 import { EnterButton } from '../components/EnterButton'
 import { ForgotMyPasswordButton } from '../components/ForgotMyPasswordButton'
 import { router } from 'expo-router'
+import { DataFormProps } from '../types/DataFormProps'
 
 export function Login() {
   const [loginError, setLoginError] = useState(false)
@@ -15,9 +15,9 @@ export function Login() {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormDataProps>()
+  } = useForm<DataFormProps>()
 
-  function handleSignUp(data: FormDataProps) {
+  function handleSignUp(data: DataFormProps) {
     if (data.username === 'user' && data.password === '123') {
       setLoginError(false)
       return

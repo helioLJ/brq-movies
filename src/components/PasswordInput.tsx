@@ -1,11 +1,11 @@
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { Control, Controller } from 'react-hook-form'
-import { FormDataProps } from '../types/DataFormProps'
 import { useRef, useState } from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
+import { DataFormProps } from '../types/DataFormProps'
 
 interface PasswordInputProps {
-  control: Control<FormDataProps>
+  control: Control<DataFormProps>
   errorMessage: string
 }
 
