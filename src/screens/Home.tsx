@@ -1,28 +1,15 @@
 import { FlatList, ScrollView } from 'react-native'
-import { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
-import { api } from '../utils/axios'
-import { API_URL } from '../utils/apiURL'
 import { MovieCard } from '../components/Home/MovieCard'
-import { apiKey } from '../utils/envVariables'
+import { getMovies } from '../api/getMovies'
+import { MovieType } from '../types/MovieType'
 
 export function Home() {
-  const [data, setData] = useState<{ id: number; poster_path: string }[]>()
-
-  async function getMovies() {
-    try {
-      const { data } = await api.get(
-        `${API_URL}movie/popular?language=pt-BR&page=1&api_key=${apiKey}`,
-      )
-      setData(data.results)
-    } catch (error) {
-      console.log(`Erro ao chamar a API: ${error}`)
-    }
-  }
-
-  useEffect(() => {
-    getMovies()
-  }, [])
+  const { data } = useQuery<MovieType[]>({
+    queryKey: ['movies'],
+    queryFn: () => getMovies(),
+  })
 
   return (
     <ScrollView

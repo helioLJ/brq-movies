@@ -1,20 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useLocalSearchParams } from 'expo-router'
-import { useState, useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Animated } from 'react-native'
+import { useQuery } from '@tanstack/react-query'
 
-import { API_URL } from '../utils/apiURL'
-import { api } from '../utils/axios'
 import { StickyHeader } from '../components/Movie/StickyHeader/StickyHeader'
 import { MovieType } from '../types/MovieType'
-import { apiKey } from '../utils/envVariables'
 import { Banner } from '../components/Movie/Banner'
 import { MovieDetails } from '../components/Movie/MovieDetails'
 import { GroupLabels } from '../components/Movie/GroupLabels/GroupLabels'
+import { getMovie } from '../api/getMovie'
 
 export function Movie() {
   const { id } = useLocalSearchParams()
-  const [data, setData] = useState<MovieType>()
 
   const scrollY = useRef(new Animated.Value(0)).current
   const scrollInterpolations = {
@@ -40,20 +38,10 @@ export function Movie() {
     }),
   }
 
-  async function getMovie() {
-    try {
-      const { data } = await api.get(
-        `${API_URL}movie/${id}?language=pt-BR&api_key=${apiKey}`,
-      )
-      setData(data)
-    } catch (error) {
-      console.log(`Erro ao chamar a API: ${error}`)
-    }
-  }
-
-  useEffect(() => {
-    getMovie()
-  }, [])
+  const { data } = useQuery<MovieType>({
+    queryKey: ['movies', { movieId: id }],
+    queryFn: () => getMovie(Number(id)),
+  })
 
   return (
     <Animated.ScrollView
