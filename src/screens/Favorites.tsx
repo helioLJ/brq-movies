@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 import { api } from '../utils/axios'
 import { API_URL } from '../utils/apiURL'
-import { MovieCard } from '../components/MovieCard'
+import { MovieCard } from '../components/Home/MovieCard'
 import { apiKey } from '../utils/envVariables'
 import { RootState } from '../redux/store'
 

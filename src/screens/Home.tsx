@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import { api } from '../utils/axios'
 import { API_URL } from '../utils/apiURL'
-import { MovieCard } from '../components/MovieCard'
+import { MovieCard } from '../components/Home/MovieCard'
 import { apiKey } from '../utils/envVariables'
 
 export function Home() {

@@ -3,7 +3,7 @@ import { Control, Controller } from 'react-hook-form'
 import { useRef, useState } from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
 
-import { DataFormProps } from '../types/DataFormProps'
+import { DataFormProps } from '../../types/DataFormProps'
 
 interface PasswordInputProps {
   control: Control<DataFormProps>

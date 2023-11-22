@@ -3,11 +3,11 @@ import { Button, Image, Text, View } from 'react-native'
 import { useForm } from 'react-hook-form'
 import { router } from 'expo-router'
 
-import { UsernameInput } from '../components/UsernameInput'
+import { UsernameInput } from '../components/Login/UsernameInput'
 import BRQLogo from '../../assets/icon.png'
-import { PasswordInput } from '../components/PasswordInput'
-import { EnterButton } from '../components/EnterButton'
-import { ForgotMyPasswordButton } from '../components/ForgotMyPasswordButton'
+import { PasswordInput } from '../components/Login/PasswordInput'
+import { EnterButton } from '../components/Login/EnterButton'
+import { ForgotMyPasswordButton } from '../components/Login/ForgotMyPasswordButton'
 import { DataFormProps } from '../types/DataFormProps'
 
 export function Login() {

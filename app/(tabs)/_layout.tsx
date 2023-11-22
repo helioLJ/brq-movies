@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router'
 
-import { HomeHeader } from '../../src/components/HomeHeader'
+import { HomeHeader } from '../../src/components/Layout/HomeHeader'
 
 export default function Layout() {
   return (
