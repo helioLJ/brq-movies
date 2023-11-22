@@ -10,6 +10,7 @@ import { MovieType } from '../types/MovieType'
 import { apiKey } from '../utils/envVariables'
 import { Banner } from '../components/Movie/Banner'
 import { MovieDetails } from '../components/Movie/MovieDetails'
+import { GroupLabels } from '../components/Movie/GroupLabels/GroupLabels'
 
 export function Movie() {
   const { id } = useLocalSearchParams()
@@ -77,6 +78,8 @@ export function Movie() {
           <Banner poster_path={data.poster_path} />
 
           <MovieDetails title={data.title} overview={data.overview} />
+
+          <GroupLabels />
         </>
       )}
     </Animated.ScrollView>
