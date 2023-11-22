@@ -7,13 +7,14 @@ export function HomeHeader() {
   const [showDropdown, setShowDropdown] = useState(false)
 
   return (
-    <View className="flex h-40 w-full items-start bg-brqNeutral pt-6">
+    <View className="flex h-32 w-full items-start bg-brqNeutral pt-10">
       <View className="w-full flex-row items-center justify-between px-6">
         <Text className="text-2xl text-white">BRQ Movies</Text>
         <TouchableOpacity
-          className={`${showDropdown ? 'bg-brqOrange' : ''} rounded-full`}
+          className={`${
+            showDropdown ? 'bg-brqOrange' : ''
+          } relative  rounded-full`}
           onPress={() => {
-            console.log('hey')
             setShowDropdown(!showDropdown)
           }}
         >
@@ -22,17 +23,17 @@ export function HomeHeader() {
             size={24}
             color={`${showDropdown ? 'black' : 'gray'}`}
           />
+          {showDropdown && (
+            <TouchableOpacity
+              className="absolute right-0 top-[30px] flex h-[44px] w-[117px] flex-row rounded-md bg-brqTertiary p-3 shadow-md"
+              onPress={() => router.replace('/')}
+            >
+              <MaterialIcons name="logout" size={20} color="white" />
+              <Text className="ml-2 text-white">Sair</Text>
+            </TouchableOpacity>
+          )}
         </TouchableOpacity>
       </View>
-      {showDropdown && (
-        <TouchableOpacity
-          className="absolute right-7 top-16 z-50 flex h-[44px] w-[117px] flex-row rounded-md bg-brqTertiary p-3 shadow-md"
-          onPress={() => router.replace('/')}
-        >
-          <MaterialIcons name="logout" size={20} color="white" />
-          <Text className="ml-2 text-white">Sair</Text>
-        </TouchableOpacity>
-      )}
     </View>
   )
 }

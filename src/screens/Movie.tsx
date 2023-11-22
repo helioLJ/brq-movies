@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useLocalSearchParams } from 'expo-router'
 import { useState, useEffect } from 'react'
 import { Text, View } from 'react-native'
@@ -19,7 +20,7 @@ export function Movie() {
       console.log(data)
       setData(data)
     } catch (error) {
-      console.log(error)
+      console.log(`Erro ao chamar a API: ${error}`)
     }
   }
 

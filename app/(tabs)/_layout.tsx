@@ -1,5 +1,4 @@
 import { Tabs } from 'expo-router'
-import { MaterialIcons } from '@expo/vector-icons'
 import { HomeHeader } from '../../src/components/HomeHeader'
 
 export default function Layout() {
@@ -11,27 +10,35 @@ export default function Layout() {
           headerShown: false,
           tabBarStyle: {
             backgroundColor: 'transparent',
-            borderBlockColor: 'transparent',
             height: 50,
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
             position: 'absolute',
-            top: -40,
+            top: -34,
+            borderTopColor: 'transparent',
+            borderBottomWidth: 1,
+            borderBottomColor: '#2E2F33',
           },
           tabBarItemStyle: {
             height: '70%',
           },
+          tabBarIconStyle: {
+            display: 'none',
+          },
+          tabBarLabelStyle: {
+            fontSize: 16,
+            fontWeight: 'bold',
+            paddingBottom: 5,
+          },
+          tabBarActiveTintColor: '#EC8B00',
         }}
       >
         <Tabs.Screen
           name="home"
           options={{
             title: 'Todos os filmes',
-            tabBarIcon: ({ size, color }) => (
-              <MaterialIcons name="home" size={size} color={color} />
-            ),
           }}
         />
 
@@ -39,9 +46,6 @@ export default function Layout() {
           name="favorites"
           options={{
             title: 'Filmes favoritos',
-            tabBarIcon: ({ size, color }) => (
-              <MaterialIcons name="favorite" size={size} color={color} />
-            ),
           }}
         />
       </Tabs>

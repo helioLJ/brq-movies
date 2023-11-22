@@ -16,7 +16,7 @@ export function Home() {
       )
       setData(data.results)
     } catch (error) {
-      console.log(error)
+      console.log(`Erro ao chamar a API: ${error}`)
     }
   }
 
