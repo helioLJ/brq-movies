@@ -10,6 +10,8 @@ import { Banner } from '../components/Movie/Banner'
 import { MovieDetails } from '../components/Movie/MovieDetails'
 import { GroupLabels } from '../components/Movie/GroupLabels/GroupLabels'
 import { getMovie } from '../api/getMovie'
+import { BannerSkeleton } from '../components/Movie/BannerSkeleton'
+import { MovieDetailsSkeleton } from '../components/Movie/MovieDetailsSkeleton'
 
 export function Movie() {
   const { id } = useLocalSearchParams()
@@ -38,7 +40,7 @@ export function Movie() {
     }),
   }
 
-  const { data } = useQuery<MovieType>({
+  const { data, isLoading } = useQuery<MovieType>({
     queryKey: ['movies', { movieId: id }],
     queryFn: () => getMovie(Number(id)),
   })
@@ -52,7 +54,20 @@ export function Movie() {
       scrollEventThrottle={16}
       className="h-screen w-full bg-brqNeutral"
     >
-      {data && (
+      {isLoading ? (
+        <>
+          <StickyHeader
+            backBackgroundColor={scrollInterpolations.backBackgroundColor}
+            headerBackgroundColor={scrollInterpolations.headerBackgroundColor}
+            headerTranslateY={scrollInterpolations.headerTranslateY}
+            titleOpacity={scrollInterpolations.titleOpacity}
+            title=""
+            movieId={9999}
+          />
+          <BannerSkeleton />
+          <MovieDetailsSkeleton />
+        </>
+      ) : (
         <>
           <StickyHeader
             backBackgroundColor={scrollInterpolations.backBackgroundColor}
@@ -66,10 +81,10 @@ export function Movie() {
           <Banner poster_path={data.poster_path} />
 
           <MovieDetails title={data.title} overview={data.overview} />
-
-          <GroupLabels />
         </>
       )}
+
+      <GroupLabels />
     </Animated.ScrollView>
   )
 }
