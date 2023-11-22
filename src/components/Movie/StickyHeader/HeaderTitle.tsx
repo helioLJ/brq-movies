@@ -8,7 +8,7 @@ interface HeaderTitleProps {
 export function HeaderTitle({ title, titleOpacity }: HeaderTitleProps) {
   return (
     <Animated.Text
-      className={`text-3xl font-bold text-white`}
+      className={`text-xl text-white`}
       style={{ opacity: titleOpacity }}
     >
       {title.length > 18 ? title.substring(0, 16) + '...' : title}
