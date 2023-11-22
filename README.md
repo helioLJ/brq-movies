@@ -8,11 +8,13 @@ Este é um aplicativo simples para visualização de uma lista de filmes, com a 
 - Para acessar a tela de login, utilize as seguintes credenciais: **Usuário: user | Senha: 123**
 
 ## Configuração da API Key
-- Antes de executar o aplicativo localmente, é necessário fornecer uma API Key válida do [The Movie DB](https://www.themoviedb.org/settings/api/). Insira a chave da API no arquivo `.env` na raiz do projeto com a seguinte estrutura:
+- Antes de executar o aplicativo localmente, é necessário fornecer uma API Key válida do [The Movie DB](https://www.themoviedb.org/settings/api/). Insira a chave da API no arquivo `.env.example` na raiz do projeto com a seguinte estrutura:
 
 ```env
 EXPO_PUBLIC_API_KEY=SuaChaveAqui
 ```
+- Após isso, mude o nome do arquivo apenas para `.env`
+
 ## Executando o Projeto Localmente
 - Para rodar o projeto localmente, execute os seguintes comandos:
 
