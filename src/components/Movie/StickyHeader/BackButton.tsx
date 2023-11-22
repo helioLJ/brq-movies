@@ -9,7 +9,7 @@ interface FavoriteButtonProps {
 export function BackButton({ backBackgroundColor }: FavoriteButtonProps) {
   return (
     <TouchableOpacity
-      className="flex h-6 w-6 items-center justify-center rounded-full"
+      className="flex h-8 w-8 items-center justify-center rounded-full"
       style={{
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         backgroundColor: backBackgroundColor as any,
