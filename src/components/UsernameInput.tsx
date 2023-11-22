@@ -1,6 +1,6 @@
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { Control, Controller } from 'react-hook-form'
-import Ionicons from '@expo/vector-icons/FontAwesome'
+import { MaterialIcons } from '@expo/vector-icons'
 import { FormDataProps } from '../types/DataFormProps'
 import { useRef, useState } from 'react'
 
@@ -26,7 +26,7 @@ export function UsernameInput({ control, errorMessage }: UsernameInputProps) {
               : 'border-white'
         }`}
       >
-        <Ionicons className="w-6" name="user" size={24} color="white" />
+        <MaterialIcons name="person" size={24} color="white" />
 
         <Controller
           control={control}
@@ -37,7 +37,7 @@ export function UsernameInput({ control, errorMessage }: UsernameInputProps) {
           render={({ field: { onChange, value } }) => (
             <>
               <TextInput
-                className={`color-white h-full w-full px-3`}
+                className={`color-white h-full w-full px-4`}
                 value={value}
                 onChangeText={(text) => {
                   setInputValue(text)
@@ -50,7 +50,7 @@ export function UsernameInput({ control, errorMessage }: UsernameInputProps) {
 
               <Text
                 onPress={() => inputRef.current.focus()}
-                className={`pointer-events-none absolute left-11 text-zinc-300 transition-transform ${
+                className={`pointer-events-none absolute left-14 text-zinc-300 transition-transform ${
                   isFocused || inputValue
                     ? '-translate-y-4 text-xs text-brqOrange'
                     : ''
@@ -59,17 +59,15 @@ export function UsernameInput({ control, errorMessage }: UsernameInputProps) {
                 Usuário
               </Text>
 
-              {inputValue ? (
-                <TouchableOpacity
-                  className="-translate-x-9"
-                  onPress={() => {
-                    onChange('')
-                    setInputValue('')
-                  }}
-                >
-                  <Ionicons name="close" size={24} color="white" />
-                </TouchableOpacity>
-              ) : null}
+              <TouchableOpacity
+                className="-translate-x-12"
+                onPress={() => {
+                  onChange('')
+                  setInputValue('')
+                }}
+              >
+                <MaterialIcons name="highlight-off" size={24} color="white" />
+              </TouchableOpacity>
             </>
           )}
         />
