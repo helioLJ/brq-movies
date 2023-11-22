@@ -51,6 +51,7 @@ export function PasswordInput({ control, errorMessage }: PasswordInputProps) {
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 ref={inputRef}
+                placeholder="Senha"
               />
 
               <Text

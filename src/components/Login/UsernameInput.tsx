@@ -47,6 +47,7 @@ export function UsernameInput({ control, errorMessage }: UsernameInputProps) {
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 ref={inputRef}
+                placeholder="Usuário"
               />
 
               <Text
