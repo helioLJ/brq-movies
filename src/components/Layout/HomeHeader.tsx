@@ -7,7 +7,7 @@ export function HomeHeader() {
   const [showDropdown, setShowDropdown] = useState(false)
 
   return (
-    <View className="flex h-32 w-full items-start bg-brqNeutral pt-10">
+    <View className="flex h-40 w-full items-start bg-brqNeutral pt-10">
       <View className="w-full flex-row items-center justify-between px-6">
         <Text className="text-2xl text-white">BRQ Movies</Text>
         <TouchableOpacity
