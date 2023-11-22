@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { Button, Image, Text, View } from 'react-native'
 import { useForm } from 'react-hook-form'
+import { router } from 'expo-router'
+
 import { UsernameInput } from '../components/UsernameInput'
 import BRQLogo from '../../assets/icon.png'
 import { PasswordInput } from '../components/PasswordInput'
 import { EnterButton } from '../components/EnterButton'
 import { ForgotMyPasswordButton } from '../components/ForgotMyPasswordButton'
-import { router } from 'expo-router'
 import { DataFormProps } from '../types/DataFormProps'
 
 export function Login() {
@@ -20,6 +21,7 @@ export function Login() {
   function handleSignUp(data: DataFormProps) {
     if (data.username === 'user' && data.password === '123') {
       setLoginError(false)
+      router.replace('/home')
       return
     }
 

@@ -2,6 +2,7 @@
 import { useLocalSearchParams } from 'expo-router'
 import { useState, useEffect, useRef } from 'react'
 import { Animated } from 'react-native'
+
 import { API_URL } from '../utils/apiURL'
 import { api } from '../utils/axios'
 import { StickyHeader } from '../components/Movie/StickyHeader/StickyHeader'

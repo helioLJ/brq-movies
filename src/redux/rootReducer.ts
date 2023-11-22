@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+
 import favoriteSlice from './favoriteSlice'
 
 const rootReducer = combineReducers({

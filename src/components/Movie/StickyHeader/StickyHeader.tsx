@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Animated } from 'react-native'
+
 import { BackButton } from './BackButton'
 import { HeaderTitle } from './HeaderTitle'
 import { FavoriteButton } from './FavoriteButton'

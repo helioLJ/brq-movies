@@ -25,6 +25,13 @@
       "@typescript-eslint"
     ],
     "rules": {
+      "import/order": [
+        "error",
+        {
+          "newlines-between": "always",
+          "groups": [["builtin", "external", "internal"]]
+        }
+      ],
       "react/self-closing-comp": "error",
       "prettier/prettier": [
         "error",

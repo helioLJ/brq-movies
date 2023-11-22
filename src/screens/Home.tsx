@@ -1,7 +1,8 @@
 import { FlatList, ScrollView } from 'react-native'
+import { useEffect, useState } from 'react'
+
 import { api } from '../utils/axios'
 import { API_URL } from '../utils/apiURL'
-import { useEffect, useState } from 'react'
 import { MovieCard } from '../components/MovieCard'
 import { apiKey } from '../utils/envVariables'
 
@@ -24,7 +25,10 @@ export function Home() {
   }, [])
 
   return (
-    <ScrollView horizontal={true} className="h-screen w-full bg-brqNeutral p-4">
+    <ScrollView
+      horizontal={true}
+      className="h-screen w-full bg-brqNeutral p-4 pt-8"
+    >
       {data && (
         <FlatList
           data={data}

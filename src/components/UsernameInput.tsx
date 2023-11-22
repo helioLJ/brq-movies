@@ -2,6 +2,7 @@ import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { Control, Controller } from 'react-hook-form'
 import { MaterialIcons } from '@expo/vector-icons'
 import { useRef, useState } from 'react'
+
 import { DataFormProps } from '../types/DataFormProps'
 
 interface UsernameInputProps {
